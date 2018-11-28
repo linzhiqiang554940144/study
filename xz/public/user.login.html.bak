@@ -1,0 +1,6 @@
+<h2>用户登录</h2>
+<form>
+	用户：<input="text" name="uname"></br>
+	密码：<input="text" name="upw"></br>
+	<input type="submit">
+</form>
