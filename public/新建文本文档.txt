@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<title> Boye </title>
+		<meta name="author" content="Boye" />  
+		<meta name="keywords" content="" />  
+		<meta name="description" content="" />
+		<meta charset="utf-8"/>
+		<style type="text/css">
+		</style>
+    </head>
+	
+  <body>
+		<input type="button" onclick="show()"/>
+		<h1 id="d1"></h1>
+	</body>
+	<script>
+		function show(){
+		var xhr=new XMLHttpRequest()
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status){
+				var result=xhr.responseText
+				d1.innerHTML=result
+				console.log(result)
+			}
+		}
+		xhr.open("get","/user/register",true)
+		xhr.send(null)
+		}
+	</script>
+</html>

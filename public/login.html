@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<title> Boye </title>
+		<meta name="author" content="Boye" />  
+		<meta name="keywords" content="" />  
+		<meta name="description" content="" />
+		<meta charset="utf-8"/>
+		<style type="text/css">
+		</style>
+    </head>
+	
+  <body>
+		<div>用户名：<input type="text" id='uname' name='uname'/></div>
+		<div>密码：<input type="text" id='upwd' name='upwd'/></div>
+		<input type="button" value='登录' onclick='login()'/>	
+		<p id='d1'></p>
+	</body>
+	<script>
+		function login(){
+			var xhr=new XMLHttpRequest()
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var result=xhr.responseText
+					d1.innerHTML=result
+					console.log(result)
+				}
+			}
+			var un=uname.value
+			var up=upwd.value
+			xhr.open("get","/user/login?uname="+un+"&upwd="+up,true)
+			xhr.send(null)
+		}
+	</script>
+</html>
