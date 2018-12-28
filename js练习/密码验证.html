@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="password" id="upwd">
+    <span class="hidden" id="msgUpwd">必须六位数字</span>
+    <script>
+      upwd.onfocus=function(){
+        msgUpwd.className="";
+        msgUpwd.innerHTML='必须六位数字'
+      }
+      //事件会在键盘松键时发生
+      upwd.onkeyup=function(){
+          var i=upwd.value.search(/^\d{6}$/)
+          if(i!=-1){
+              msgUpwd.innerHTML='格式正确'
+              msgUpwd.className='ok'
+          }else{
+             msgUpwd.innerHTML='格式错误'
+              msgUpwd.className='err'
+          }
+      }
+
+    </script>
+</body>
+</html>

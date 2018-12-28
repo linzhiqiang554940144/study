@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ball(){
+            var reds=[];
+            while(reds.length<6){
+                var r=parseInt(Math.random()*33+1)
+                if(reds.indexOf(r)==-1){
+                    reds.push(r)
+                }
+                reds.sort(function(a,b){return a-b})
+                var blue=parseInt(Math.random()*16+1);
+                document.write(String(reds)+"|"+blue+"<br>")
+            }
+        }
+        ball()
+    </script>
+</body>
+</html>
