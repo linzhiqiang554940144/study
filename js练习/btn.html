@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>我是第几个</button>
+    <button>我是第几个</button>
+    <button>我是第几个</button>
+    <button>我是第几个</button>
+    <button>我是第几个</button>
+    <button>我是第几个</button>
+    <script>
+        var btn=document.getElementsByTagName("button")
+        function factory(i){
+            return function(){
+                alert(`我是第：${i}个`)
+            }
+        }
+        for(var i=0;i<btn.length;i++){
+            btn[i].onclick=factory(i)
+        }
+    </script>
+</body>
+</html>
