@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        var emp=function (a,b,c,d){
+            Object.defineProperties(this,{
+                eid:{
+                    value:a,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false,
+                },
+                ename:{
+                    value:b,
+                    writable:true,
+                    enumerable:true,
+                    configurable:false,
+                },
+                salary:{
+                    value:c,
+                    writable:true,
+                    enumerable:false,
+                    configurable:false,
+                },
+                _age:{
+                    writable:true,
+                    enumerable:false,
+                    configurable:false,
+                },
+                age:{
+                    get:function(){
+                        return this._age
+                    },
+                    set:function(value){
+                        if(value<18&&value<68){
+                            this._age=value
+                        }else throw Error("超出年龄")
+                    }
+                }
+            })
+        }
+        var zrt=new emp(1,"日天",12000,18)
+        console.log(zrt)
+        console.log(zrt.salary)
+        console.log(zrt.age)
+    </script>
+</body>
+</html>

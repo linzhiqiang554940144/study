@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function junm(){
+            console.log(`${this.ename}跳一次`)
+        }
+        var lilei={ename:"lilei"}
+        var hmm={ename:"hmm"}
+        var lilei_junm=junm.bind(lilei)
+        var hmm_junm=junm.bind(hmm)
+        setInterval(lilei_junm,1000)
+        setInterval(hmm_junm,1000)
+    </script>
+</body>
+</html>

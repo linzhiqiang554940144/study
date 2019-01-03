@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var class1=[1,2,5,7,9]
+        var place=class1.reduce(function(prev,elem){
+            return prev+elem
+        },0)
+        console.log(place)
+        var class2=[2,5,8,4,63,1]
+        var sum=class2.reduce(function(prev,elem){
+            return prev+elem
+        },place)
+        console.log(sum)
+    </script>
+</body>
+</html>

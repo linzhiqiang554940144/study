@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fa={bal:10000000000,car:"baoma"}
+        var hmm=Object.create(fa,{
+            bao:{
+                value:"lv",
+                writable:true,
+                enumerable:true,
+                configurable:false
+            },
+            phone:{
+                value:"apple",
+                writable:true,
+                enumerable:true,
+                configurable:false
+            }
+        })
+        console.log(hmm)
+    </script>
+</body>
+</html>

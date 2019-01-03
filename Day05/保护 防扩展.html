@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        var emp=function(eid,ename,salary,age){
+            Object.defineProperties(this,{
+                eid:{
+                    value:eid,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                ename:{
+                    value:ename,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                salary:{
+                    value:salary,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                _age:{
+                    writable:true,
+                    enumerable:false,
+                    configurable:false,
+                }
+            })
+            this.age=age
+            //Object.preventExtensions(emp)  防止拓展
+            //Object.seal(emp)//防止拓展 和 删除
+            Object.freeze(emp)
+        }
+        Object.defineProperty(emp.prototype,"age",{
+            get:function(){
+                return this._age
+            },
+            set:function(value){
+                if(value>18&&value<68){
+                    this._age=value
+                }else throw Error("年龄超出范围")
+            },
+            enumerable:true,configurable:false
+        })
+        
+        var rt=new emp(1,3,50,50)
+        //delete rt.ename
+        for(var key in rt){
+            console.log(`${key}:${rt[key]}`)
+        }
+        console.log(rt)
+    </script>
+</body>
+</html>
