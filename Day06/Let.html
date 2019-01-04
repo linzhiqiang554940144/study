@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var t=0;
+        function conn(){
+            document.write(`建立连接耗时0.3s<br>`)
+            t+=0.3
+        }
+        function query(){
+            document.write(`查询数据耗时0.8s<br>`)
+            t+=0.8
+
+            var err=false
+            
+                if(err){
+                    (function(){
+                        var t=new Date();//用自调函数防止函数提升
+                        document.write(`<b>出错了，at:${t.toLocaleDateString()}</b>`)
+                    })()
+                }
+            
+        }
+        conn()
+        query()
+        document.write(`总耗时${t}s`)
+        
+    </script>
+</body>
+</html>

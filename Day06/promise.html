@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function liang(fun){
+            console.log('亮起跑。。');
+            setTimeout(function(){
+                console.log('亮到达终点！')
+                fun()
+            },6000)
+        }
+        function ri(fun){
+            console.log('日起跑。。');
+            setTimeout(function(){
+                console.log('日到达终点！')
+                fun()
+            },4000)
+        }
+        function di(){
+            console.log('迪起跑。。');
+            setTimeout(function(){
+                console.log('迪到达终点！')
+            },3000)
+        }
+        liang(function(){
+            ri(function(){
+                di()
+            })
+        })
+    </script>
+</body>
+</html>

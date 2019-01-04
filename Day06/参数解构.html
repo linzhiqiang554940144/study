@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax({url,type,data}){
+             type=type||"get";
+            document.write(`向服务器地址${url}发送${type}类型的请求<br>`)
+            if(data){
+                document.write(`携带参数${data}<br>`)
+            }else{
+                document.write(`不带参数<br>`)
+            }
+        }
+        ajax({url:"www.baidu.com",type:"post",data:"uname=1534153&upwd=545413"})
+        ajax({url:"www.baidu.com"})
+        ajax("www.baidu.com","lid=5")
+    </script>
+</body>
+</html>

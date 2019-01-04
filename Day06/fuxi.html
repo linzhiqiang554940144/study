@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Emp=function(eid,ename,salary,age){
+            Object.defineProperties(this,{
+                eid:{
+                    value:eid,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                ename:{
+                    value:ename,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                salary:{
+                    value:salary,
+                    writable:false,
+                    enumerable:true,
+                    configurable:false
+                },
+                age:{
+                writable:true,
+                enumerable:false,
+                configurable:false
+                },
+                _age:{
+                    get:function(){
+                        return this._age
+                    },
+                    set:function(value){
+                        if(value>18&&value<68){
+                            this._age=value
+                        }else throw Error("年龄超出范围")
+                    }
+                }
+            })
+            this.age=age
+        }
+        var zr=new Emp(1,"zrt",12000,19)
+        console.log(zr)
+    </script>
+</body>
+</html>

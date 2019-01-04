@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Emp{
+            constructor(eid,ename,age){
+                this.eid=eid;
+                this.ename=ename;
+                this.age=age
+            }
+            get age(){return this._age}
+            set age(value){
+                if(value>=18&&value<=65){
+                    this._age=value
+                }else throw new Error('超出年龄范围')
+            }
+        }
+        var zr=new Emp(1,"zrt",28)
+        console.log(zr)
+        zr.age=21
+        console.log(zr.age)
+    </script>    
+</body>
+</html>
