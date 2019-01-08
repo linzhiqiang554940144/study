@@ -67,15 +67,15 @@
 		window.onload=function(){
 			var table=document.getElementById("data")
 			var btns=document.getElementsByTagName("button")
-			function gettotal(){
+			/*function gettotal(){
 				var total=0
 				var tbody_tr=table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
 				for(var elem of tbody_tr){
 					total+=parseInt(elem.lastElementChild.innerText.slice(1))
 				}
 				table.getElementsByTagName("tfoot")[0].getElementsByTagName("td")[1].innerText= "￥" +total.toFixed(2)
-				console.log(tbody_tr)
-			}
+				console.log(tbody_tr  )
+			}*/
 			//遍历每一个按钮
 			for(var btn of btns){
 				//在处理函数中应该用this关键字获得将来触发事件的当前元素本身
@@ -97,8 +97,18 @@
 				var price=parseFloat(this.parentNode.previousElementSibling.innerHTML.slice(1))//去掉开头的￥
 				var subtotal=price*n
 				this.parentNode.nextElementSibling.innerHTML=`$${subtotal.toFixed(2)}`				
-				gettotal()
+				//gettotal()
+				var tds=table.querySelectorAll("tbody>tr>td:last-child")
+				console.log(tds)
+				var total=0
+				for(var td of tds){
+					total+=parseFloat(td.innerHTML.slice(1))
+					console.log(total)
 				}
+				table.querySelector("tfoot>tr>td:last-child").innerHTML="￥"+ total.toFixed(2)
+				console.log(total)
+				}
+				
 			}
 		}
 	</script>
