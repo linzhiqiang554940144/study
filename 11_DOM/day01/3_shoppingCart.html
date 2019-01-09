@@ -1,0 +1,116 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>使用Selector API实现购物车客户端计算</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; text-align:center;
+		border-collapse:collapse;
+	}
+	td,th{border:1px solid black}
+	td[colspan="3"]{text-align:right;}
+</style>
+
+</head>
+<body>
+	<table id="data">
+		<thead>
+			<tr>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>iPhone6</td>
+				<td>¥4488.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+				<td>¥4488.00</td>
+			</tr>
+			<tr>
+				<td>iPhone6 plus</td>
+				<td>¥5288.00</td>
+				<td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+				</td>
+				<td>¥5288.00</td>
+			</tr>
+			<tr>
+				<td>iPad Air 2</td>
+				<td>¥4288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+				<td>¥4288.00</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">Total: </td>
+				<td>¥14064.00</td>
+			</tr>
+		</tfoot>
+	</table>
+	<script>
+		//查找
+		
+		window.onload=function(){
+			var table=document.getElementById("data")
+			var btns=document.getElementsByTagName("button")
+			/*function gettotal(){
+				var total=0
+				var tbody_tr=table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
+				for(var elem of tbody_tr){
+					total+=parseInt(elem.lastElementChild.innerText.slice(1))
+				}
+				table.getElementsByTagName("tfoot")[0].getElementsByTagName("td")[1].innerText= "￥" +total.toFixed(2)
+				console.log(tbody_tr  )
+			}*/
+			//遍历每一个按钮
+			for(var btn of btns){
+				//在处理函数中应该用this关键字获得将来触发事件的当前元素本身
+				
+				btn.onclick=function(){
+					var btn=this
+				//	this.innerHTML="❀"
+				var span=this.parentNode.children[1]
+				// span.innerHTML="❀"
+				var n=parseInt(span.innerHTML)
+				//实现+-
+				if(this.innerHTML=="+"){
+					n++
+				}else if(n>1){
+					n--
+				}
+				span.innerHTML=n
+				//计算小计=单价*数量
+				var price=parseFloat(this.parentNode.previousElementSibling.innerHTML.slice(1))//去掉开头的￥
+				var subtotal=price*n
+				this.parentNode.nextElementSibling.innerHTML=`$${subtotal.toFixed(2)}`				
+				//gettotal()
+				var tds=table.querySelectorAll("tbody>tr>td:last-child")
+				console.log(tds)
+				var total=0
+				for(var td of tds){
+					total+=parseFloat(td.innerHTML.slice(1))
+					console.log(total)
+				}
+				table.querySelector("tfoot>tr>td:last-child").innerHTML="￥"+ total.toFixed(2)
+				console.log(total)
+				}
+				
+			}
+		}
+	</script>
+</body>
+</html>
