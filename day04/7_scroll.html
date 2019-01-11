@@ -9,7 +9,8 @@
       position:fixed;
       bottom:100px;
       right:0;
-      display:none;
+      opacity: 0;
+      transition: .1s;
     }
   </style>
 
@@ -19,7 +20,15 @@
 		<a href="#">返回顶部</a>
 	</div>
   <script>
-
+    window.onscroll=function(){
+      var scrollTop=document.body.scrollTop||document.documentElement.scrollTop
+      console.log(scrollTop)
+      if(scrollTop>=500){
+        toTop.style.opacity="1"
+      }else{
+        toTop.style.opacity="0"
+      }
+    }
 	</script>
  </body>
 </html>

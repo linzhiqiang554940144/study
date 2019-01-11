@@ -17,7 +17,20 @@
 		</div>
 		<textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
     <script>
-			
-		</script>
+		keys.onclick=function(e){
+			var s=sc.value
+			if(e.target.nodeName=="BUTTON"){
+				var etxt=e.target.innerHTML
+				if(etxt=="C"){
+					sc.value=""
+				}else if(etxt=="="){
+					sc.value=eval(s)
+				}else{
+					s+=etxt
+					sc.value=s
+				}
+			}
+		}
+	</script>
 	</body>
 </html>

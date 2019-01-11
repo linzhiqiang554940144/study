@@ -52,5 +52,19 @@
 	    </table>
 	</form>
 	<script src="js/4.js"></script>
+	<script>
+		var a=document.getElementsByTagName("a")[0]
+		a.onclick=function(e){
+			e.preventDefault()
+		}
+		var form=document.forms[0]
+		form.onsubmit=function(e){
+			var rName=vali(txtName,/^\w{1,10}$/)
+			var rPwd=vali(txtPwd,/^\d{6}$/)
+			if(!(rName&&rPwd)){
+				e.preventDefault();
+			}
+		}
+	</script>
  </body>
 </html>
