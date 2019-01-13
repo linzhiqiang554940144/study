@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+ <head>
+	<meta charset="UTF-8">
+	<title>根据页面滚动位置显示浮动框</title>
+	<style>
+    body{height:2000px;}
+    #toTop{
+      position:fixed;
+      bottom:100px;
+      right:0;
+      opacity: 0;
+      transition: .1s;
+    }
+  </style>
+
+ </head>
+ <body>
+	<div id="toTop">
+		<a href="#">返回顶部</a>
+	</div>
+  <script>
+    window.onscroll=function(){
+      var scrollTop=document.body.scrollTop||document.documentElement.scrollTop
+      console.log(scrollTop)
+      if(scrollTop>=500){
+        toTop.style.opacity="1"
+      }else{
+        toTop.style.opacity="0"
+      }
+    }
+	</script>
+ </body>
+</html>

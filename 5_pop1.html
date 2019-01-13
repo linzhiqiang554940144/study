@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+ <head>
+	<meta charset="UTF-8">
+	<title>在当前显示区范围内实现点不到的小方块</title>
+	<style>
+		div{position:fixed;width:100px;height:100px;
+			background-image:url(images/xiaoxin.gif);
+      background-size:100%;
+		}
+	</style>
+	
+ </head>
+ <body>
+	<div id="pop"></div>
+  <script>
+		var canMove=false
+		var offsetX,offsetY
+		pop.onmousedown=function(e){
+			canMove=true
+			offsetX=e.offsetX
+			offsetY=e.offsetY
+		}
+		window.onmousemove=function(e){
+			if(canMove){
+				//获得当前鼠标位置
+				var x=e.clientX
+				var y=e.clientY
+				//如果打开了开关，pop才跟随鼠标移动
+				//将pop移动到新位置			
+				var top=y-offsetY
+				var left=x-offsetX
+				pop.style.top=top+"px"
+				pop.style.left=left+"px"
+			}
+		}
+		pop.onmouseup=function(){
+			canMove=false
+		}
+	</script>
+ </body>
+</html>
