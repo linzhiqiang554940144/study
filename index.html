@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">获得天气</button>
+  <script src="jquery-1.11.3.js"></script>
+<script>
+/*$("#btn").click(function(){
+  var script=document.createElement("script");
+  script.src="http://localhost:8000?callback=doit";
+  document.body.appendChild(script);
+})
+function doit(res){
+  alert(res);
+  //回调函数执行完,删除body中最后一个script
+  document.body.removeChild(
+    document.body.lastElementChild
+  );
+}*/
+$("#btn").click(function(){
+  $.ajax({//右键->用Live Server运行，查看错误
+    url:"http://localhost:8000",
+    type:"get",
+    dataType:"jsonp",
+    success:function(res){
+      alert(res)
+    }
+  })
+})
+
+</script>
+  <!--<script src="http://localhost:8000?callback=doit"></script>-->
+  <!--客户端携带自定义函数名doit到服务端-->
+  <!--doit('sun -4~8 from dongdong')-->
+  <!--能够请求一段js代码到客户端自动执行-->
+</body>
+</html>
