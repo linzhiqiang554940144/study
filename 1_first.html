@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <!--1. View视图/界面-->
+  <div id="app">
+    <h1>我的信息:</h1>
+    <h2>Welcome {{uname}}</h1>
+    <hr>
+    <h3>您的积分是: {{score}}</h2>
+  </div>
+  <script>
+    //3. ViewModel 控制器
+    var vm=new Vue({
+      el:"#app",
+      data:{//2. Model模型数据
+        uname:"dingding",
+        score:3000
+      }
+    })//在控制台: vm.score+=1000
+  </script>
+</body>
+</html>

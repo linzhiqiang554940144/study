@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<h1>价格:¥{{price.toFixed(2)}}</h1>
+<h1>生日:{{new Date(birth).toLocaleDateString()}}</h1>
+<h1>面积:{{parseFloat(width)*parseFloat(height)}}</h1>
+<h1>地址:{{address.city}} {{address.street}}</h1>
+<h1>今天是: 星期{{week[4]}}</h1>
+<h1>性别1: {{sex1==1?"男":"女"}}</h1>
+<h1>性别2: {{sex2==1?"男":"女"}}</h1>
+</div>
+<script>
+new Vue({
+  el:"#app",//找到并扫描和监控#app下所有内容
+  data:{
+    week:["日","一","二","三","四","五","六"],
+    sex1:1,
+    sex2:0,
+    price:12.5,
+    birth:819907200000,
+    width:"12px",
+    height:"12px",
+    address:{ city:"北京", street:"万寿路" }
+  }
+})
+</script>
+</body>
+</html>

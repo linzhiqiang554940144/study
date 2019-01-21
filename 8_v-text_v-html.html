@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li>{{html}}</li>
+      <li v-html="html"></li>
+      <li v-text="html"></li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        html:"来自<a href='#'>&lt;&lt;新华社&gt;&gt;</a>的消息"
+      }
+    })
+  </script>
+</body>
+</html>

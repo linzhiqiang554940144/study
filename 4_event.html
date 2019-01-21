@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<button @click="doit()">click me</button>
+<a href="#" @click="doit($event)">click me</a>
+<a href="#" @click.prevent="doit()">click me</a>
+<hr>
+<!--1. 定义静态界面，并找到可能变化的量-->
+<a href="#" @click.prevent="change(-1)">-</a><span>{{count}}</span><a href="#" @click.prevent="change(+1)">+</a>
+</div>
+<script>
+new Vue({
+  el:"#app",
+  //2. 界面上有几处变化，data中就有几个模型变量对应
+  data:{ count:1 },
+  methods:{//3. 定义事件处理函数操作模型变量
+    change(i){//专心操作模型变量，不用管界面
+      this.count+=i;
+      if(this.count<=0) this.count=1;
+    },
+    //doit:function(){
+    doit(/*e*/){//ES6 :function可省略
+      //if(e!==undefined) e.preventDefault();
+      alert("疼!");
+    }
+  }
+});
+</script>
+</body>
+</html>

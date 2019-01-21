@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>加载完成时间:{{time.toLocaleTimeString()}}</h1>
+    <h1>当前系统时间:{{time.toLocaleTimeString()}}</h1>
+    <h1 v-pre>Vue框使用{{模型变量}}的语法来绑定元素内容</h1>
+  </div>
+  <script>
+    var vm=new Vue({
+      el:"#app",
+      data:{ time:new Date() }
+    })
+    setInterval("vm.time=new Date()",1000)
+  </script>
+</body>
+</html>

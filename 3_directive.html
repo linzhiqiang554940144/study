@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <a href="http://tmooc.cn" :title="tip">{{value}}</a>
+    <img :src="pm25<100?'imgs/1.png':
+                pm25<200?'imgs/2.png':
+                pm25<300?'imgs/3.png':
+                         'imgs/4.png'">
+  </div>
+  <script>
+    var vm=new Vue({
+      el:"#app",
+      data:{
+        value:"welcome tmooc",
+        tip:"点此调转到tmooc首页",
+        pm25:350,
+      }
+    });
+    setInterval(function(){
+      vm.pm25=Math.random()*400
+    },1000)
+  </script>
+</body>
+</html>
