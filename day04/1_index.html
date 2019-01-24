@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+  <router-view></router-view>
+</div>
+<!--1. 定义多个"页面"的模板片段-->
+<template id="tplHome">
+<div>
+  <h1>这里是Home页</h1>
+  <hr>
+  <h2>Welcome dingding, 晴 -9~3</h2>
+</div>
+</template>
+<template id="tplLogin">
+<form>
+  用户名:<input type="text"><br>
+  密码:<input type="password"><br>
+  <button>登录</button>
+</form>
+</template>
+<script>
+//2. 封装<template>为子组件
+var home={ template:"#tplHome" };
+var login={ template:"#tplLogin"};
+//3. 定义路由字典: 相对路径与子组件的对应关系列表
+var routes=[
+  {path:"/",component:home},//默认首页
+  {path:"/home",component:home},
+  {path:"/login",component:login},
+  {path:"/*",component:{template:"<h1>404:未找到页面!</h1>"}}//404
+];
+//4. 将路由字典放入新创建的路由器中
+var router=new VueRouter({ routes });
+</script>
+<script>
+//5. 将路由器加入到当前页面的根组件中
+new Vue({ el:"#app", router });
+//6. 强调: 在<div id="app">中必须用<router-view>占位
+</script>
+</body>
+</html>

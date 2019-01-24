@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+<body>
+    <template id="xindex">
+        <div>
+            <h1>赵日天</h1>
+        </div>
+    </template>
+    <script>
+        var ineex={
+            template:"#xindex"
+        }
+    </script>
+    <template id="xhome">
+        <div>
+            页头
+            <router-view></router-view>
+        </div>
+    </template>
+    <script>
+        var xhomee={
+            template:"#xhome"
+        }
+    </script>
+
+
+    <script>
+        var routes=[
+            {path:"/",component:xhomee,children:[
+                {path:"/",component:ineex}
+                ]
+            }
+        ]
+        var router=new VueRouter({routes})
+    </script>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{},
+            router
+        })
+    </script>
+</body>
+</html>

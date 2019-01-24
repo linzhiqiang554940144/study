@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+<template id="tplHome">
+<div style="background:lightBlue">
+  <h1>这里是Home</h1>
+  <hr>
+  <my-header></my-header>
+  <router-view></router-view>
+</div>
+</template>
+
+<template id="tplMain">
+<div style="background:pink">
+  <h2>这里是首页的主体</h2>
+</div>
+</template>
+<template id="tplAbout">
+<div style="background:lightGreen">
+  <h2>这里是关于的主体</h2>
+</div>
+</template>
+<template id="tplLogin">
+<form>
+  用户名:<input type="text"><br>
+  密码:<input type="password"><br>
+  <button @click="login()">登录</button>
+</form>
+</template>
+<template id="tplDetails">
+<div style="background:#aaf">
+  <h2>这里是详情页: {{lid}}</h2>
+</div>
+</template>
+<template id="tplHeader">
+<div style="background:yellow">
+  <h2>这里是页头</h2>
+  <ul>
+    <li><router-link to="/">首页</router-link></li>
+    <li><router-link to="/about">关于</router-link></li>
+    <li><router-link to="/details/5">查看详情</router-link></li>
+    <li><router-link to="/login">登陆</router-link></li>
+    <li><button @click="search()">查询</button></li>
+  </ul>
+  <hr>
+</div>
+</template>
+<script>
+var details={
+  template:"#tplDetails",
+  data(){ return {lid:0} },
+  created(){ this.lid=this.$route.params.lid; },
+  watch:{//监控
+    "$route":{//当地址栏中的内容发生变化时
+      handler(to){//自动调用handler
+        //to: 新的$route对象
+        this.lid=to.params.lid;
+      },
+      immediate:true//立刻
+    }
+  }
+}
+var login={ 
+  template:"#tplLogin",
+  methods:{
+    login(){
+      alert("登陆成功,返回首页!");
+      this.$router.push("/");
+    }
+  }
+}
+var myHeader={ 
+  template:"#tplHeader",
+  methods:{
+    search(){
+      this.$router.push("/details/10");
+    }
+  }
+}
+var home={
+  template:"#tplHome",
+  components:{ myHeader }
+}
+var main={ template:"#tplMain" }
+var about={ template:"#tplAbout" }
+
+
+var routes=[
+  {path:"/",component:home,children:[
+    {path:"/",component:main},//默认首页
+    {path:"/main",component:main},
+    {path:"/about",component:about},
+    {path:"/details/:lid",component:details}
+  ]},
+  {path:"/login",component:login},
+  {path:"/*",component:{template:"<h1>404:未找到页面!</h1>"}}//404
+]
+
+var router=new VueRouter({ routes });
+</script>
+<script>
+new Vue({el:"#app", router});
+</script>
+</body>
+</html>
