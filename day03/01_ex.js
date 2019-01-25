@@ -1,0 +1,1 @@
+var computer={name='Macbook',price='7800'}

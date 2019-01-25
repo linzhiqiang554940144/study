@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<title> Boye </title>
+		<meta name="author" content="Boye" />  
+		<meta name="keywords" content="" />  
+		<meta name="description" content="" />
+		<meta charset="utf-8"/>
+		<style type="text/css">
+		</style>
+    </head>
+	
+  <body>
+	</body>
+	<script>
+		//1.创建ajax对象
+			//高版本浏览器，标准 创建
+		var xhr=new XMLHTTPRequest();
+		//console.log(xhr)
+			//IE8以下创建
+		//var xhr=new ActiveXObject("Microsoft.XMLHttp")
+			//console.log(window.XMLHttpRequest)
+		//2.监听器---关注响应
+		xhr.onreadystatechange=function(){
+			if(xhr.readystate==4){
+				//接收响应
+			}
+		}
+			
+		//3.打开链接
+		xhr.open("get","url",true);
+		//4.发送请求
+		xhr.send()
+	</script>
+</html>

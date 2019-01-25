@@ -1,0 +1,51 @@
+一.ajax
+	1.post请求的数据放在请求主体中
+	var formdata="uname="+uname.value+"&upwd="+upwd.value
+	发送时放在：xhr.send(formdata)
+	2.发送请求之前，要手动修改请求消息头
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded") 可以发送任意字符串
+	默认的消息头 Content-Type:text/plain,传递的数据是普通的，无特殊的字符
+	注意：设置请求消息头，放在xhr.open和xhr.send之间
+二.json数据格式
+	1.js对象的数据格式
+	var stu={name:"lilei",age:20,gender:"男"}
+	json：js对象表示法，以js对象的数据格式表现出来的字符串
+	2.json的语法
+		①json中用一对{}来表示一个对象
+		②对象中的属性名称必须用""（不要用单引号）
+			如果值是字符串，也必须用""
+		③json表现出来是一个字符串，所以最外层添加单引号
+--------------------------
+	*json是一个以js对象为格式字符串，不能以对象属性的方式获取值，需要先把json字符串转换为js对象，才能使用
+	转换方法放在监听里面：var arr=JSON.parse(result)
+
+三.XML数据格式 extensible Markup language
+	可扩展标记语言
+	xml的标记是没有被预定义过的，需要自行定义
+	xml的宗旨，是做数据的传递，而不是数据展示
+	语法规范：
+		1.xml最顶部做声明
+			<?xml version="1.0" encoding="utf-8"?>
+		2.xml标记语法
+			必须成对出现
+			严格区分大小写
+			允许嵌套，但注意嵌套顺序
+			每个标记允许自定义属性，格式与html一致，但是值必须带“”
+			每个xml文档，有且只有一个根标签
+			---------使用ajax获取xml数据----------------
+					var students=result.getElementsByTagName("student")
+					var names=students[0].getElementsByTagName("name")
+					console.log(names[0].innerHTML)
+					---------------------------------
+			这种dom操作获取的数据，叫类数据
+			类数组可以使用下标查找元素，但是不能使用数组API
+
+	ajax错误总结
+		404：检查url是否正确，要访问的资源是不是在url指向的位置(html位置，和路由)
+		5XX: 检查接口中的代码是否正确
+		show is not defined  show()方法未定义
+		Uncaught SyntaxError: Unexpected token { 标点符号，或者括号错误
+		Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.跨域错误，说明你的html是本地打开
+		Failed to execute 'setRequestHeader' on 'XMLHttpRequest': The object's state must be OPENED 修改请求头放在xhr.open之前或者xhr.send之后
+												
+						

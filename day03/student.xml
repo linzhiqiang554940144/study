@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<studentlist>
+	<student>
+		<name>张日</name>
+		<age>25</age>
+		<gender>女</gender>
+	</student>
+	<student>
+		<name>邵佳迪</name>
+		<age>22</age>
+		<gender>女</gender>
+	</student>
+	<student>
+		<name>廖晔</name>
+		<age>22</age>
+		<gender>男</gender>
+	</student>
+</studentlist>

@@ -1,0 +1,85 @@
+2.简单的DOM操作
+		1.要获取的元素一定要有id
+			<div id='d1'></div>
+		2.在js中用id获取对象
+			document.getElementById('d1')
+		3.获取/设置元素的内容 innerHTML
+			d1.innerHTML=...
+			var str=d1.innerHTML
+			innerHTML：指的是双标签，开关标签之间的所有内容。如果设置innerHTML时，添加了新标签，新标签也会在页面上渲染
+		4.事件：用户与页面交互行为，调用声明js代码
+
+3.获取/设置表单控件的数据
+	1.使用input控件的id代表控件对象
+	2.通过value属性
+		function show(){
+			var a=parseInt(d1.value)
+			var b=parseInt(d2.value)
+			console.log(a+b)
+			d3.value=a+b
+	4.事件
+		就是用户与页面交互行为，调用声明js代码
+4.HTML元素的事件
+	允许通过用户的行为来激发的操作就是事件
+	常用的事件： onclick用户点击元素，激发某项操作
+							 onblur 文本框密码框失去焦点事件
+							 onfocus 文本框密码框获得焦点事件
+							 body--onload 当页面加载完成马上激发的事件
+=============================AJAX======================================================================
+二.AJAX
+	同步Synchronous
+	在一个任务进行过程中，不能开启其他任务
+	同步访问：浏览器在向服务器发送请求时，浏览器只能等待服务器的响应，不能做其他事情。
+		出现场合：
+			1.地址栏输入网址
+			2.a标记跳转
+			3.submit表单的提交
+
+	异步访问：Asynchronous 浏览器在向服务器发送请求时，不耽误用户在网页上的其他操作
+		在一个任务开启的同时，可以开启其他任务
+		出现的场合：
+			1.用户名的重复验证
+			2.聊天室
+			3.搜索建议
+			4.股票走势图
+（1）什么是AJAX
+		 Asynchronous JavaScript And Xml
+		 异步的          js       和  xml  json
+		 1.本质：使用js提供的异步对象（XMLHttpRequest-----xhr）
+		 异步的向服务器发送请求
+		 并接收响应回来的数据
+		 ajax中，可以无刷新效果，去更改页面的布局结构和内容
+		 2.使用ajax步骤
+					 ex:
+								1.var xhr=new XMLHTTPRequest();
+										//2.监听器---关注响应
+								2.xhr.onreadystatechange=function(){
+								if(xhr.readyState==4&& xhr.status==200){
+									//接收响应
+									var result=xhr.responseText
+									}
+								}
+							//3.打开链接
+								xhr.open("method","url",true);
+							//4.发送请求
+								xhr.send()
+		 3.创建异步对象
+				标准创建* var xhr=new XMLHttpRequest()
+				ie8以下  var xhr=new ActiveXObject("Microsoft.XMLHttp")
+				如何判断用户浏览器版本：
+				console.log(window.XMLHttpRequest)  如果不支持属性为null
+		 4.异步对象的常用属性和方法
+				readystate 表示xhr对象的请求状态
+				取值 0 -4 表示着5个状态
+				0:请求未初始化
+				1：打开服务器连接，正在发送请求
+				2：接收响应头
+				3：接收响应主体
+				4：接收响应数据成功
+				当readystate的值为4的时候，才表示所有的数据接收完毕
+				onreadystatechange 当xhr的readystate属性发生改变时触发
+				status
+			5.使用get发送带参数的请求
+ 				url="demo/login?uname=value1&upwd=value2"
+			------------------------------
+				

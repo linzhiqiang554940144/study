@@ -1,0 +1,34 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<title> Boye </title>
+		<meta name="author" content="Boye" />  
+		<meta name="keywords" content="" />  
+		<meta name="description" content="" />
+		<meta charset="utf-8"/>
+		<style type="text/css">
+		</style>
+    </head>
+	
+  <body>
+		<div>用户名称：<input type="text" id='uname' onblur='txt_blur()' />
+			<span id='showUname'></span>
+		</div>
+		<div>用户密码：<input type="password" id='upwd' onfocus="pwd_focus()" />
+			<span id="showPwd"></span>
+		</div>
+	</body>
+	<script>
+		function pwd_focus(){
+			showPwd.innerHTML='密码长度为6-12位'
+		}
+		function txt_blur(){
+			var user_name=uname.value
+			if(user_name==""){
+				showUname.innerHTML="用户名不能为空"
+			}else{
+				showUname.innerHTML="通过"
+			}	
+		}
+	</script>
+</html>
