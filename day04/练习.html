@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+<body>
+    <template id="tplheader">
+        <div>
+            <h1>这是页头</h1>
+            <router-link to="/login">登录</router-link>
+        </div>
+    </template>
+    <script>
+        Vue.component("my-header",{
+            template:"#tplheader"
+        })
+    </script>
+    <template id="tplhome">
+        <div>
+            <my-header></my-header>
+            <router-view></router-view>
+        </div>
+    </template>
+    <script>
+        var Home={
+            template:"#tplhome"
+        }
+    </script>
+    <template id="tplindex">
+        <div>
+            <h1>这是首页</h1>
+            <ul>
+                <li><router-link to="/details/1">进入</router-link></li>
+                <li><router-link to="/details/2">进入</router-link></li>
+                <li><router-link to="/details/3">进入</router-link></li>
+            </ul>
+        </div>
+    </template>
+    <script>
+        var Index={
+            template:"#tplindex"
+        }
+    </script>
+    <template id="tpllogin">
+        <div>
+            登录：<input type="text">
+            注册：<input type="password">
+            <button @click="login()">登录</button>
+        </div>
+    </template>
+    <script>
+        var Login={
+            template:"#tpllogin",
+            methods:{
+                login(){
+                    alert("yex")
+                    this.$router.push("/")
+                }
+            }
+        }
+    </script>
+    <template id="tpldetails">
+        <div>
+            <h1>这是详情页{{lid}}</h1>
+        </div>
+    </template>
+    <script>
+        var Details={
+            template:"#tpldetails",
+            props:["lid"]
+        }
+    </script>
+    <script>
+        var routes=[
+        {path:"/",component:Home,children:[
+            {path:"/",component:Index},
+            {path:"/details/:lid",component:Details,props:true}
+        ]},
+        {path:"/login",component:Login}
+    ]
+    var router=new VueRouter({routes})
+    </script>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{},
+            router
+        })
+    </script>
+</body>
+</html>
