@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>读取并修改元素的属性</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/3.css" />
+<style></style>
+
+</head>
+<body>
+	<h2>实现多标签页效果</h2>
+  <div class="tabs">
+    <ul id="tab">
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content1">10元套餐</a></li>
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content2">30元套餐</a></li>
+      <li><a href="javascript:;" data-toggle="tab" data-target="#content3">50元包月</a></li>
+    </ul>
+    <div id="container">
+      <div id="content1">
+        10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+      </div>
+      <div id="content2">
+        30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+      </div>
+      <div id="content3">
+        50元包月详情：<br />&nbsp;每月无限量随心打
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("content1").style.zIndex="10"
+    var tabs=document.querySelectorAll("[data-toggle]")
+    //console.log(tabs)
+    for(var tab of tabs){
+        console.log(tab)
+        tab.onclick=function(){
+            var tab=this
+            divs=document.querySelectorAll("#container>div")
+            for(var div of divs){
+                div.style.zIndex=""
+            }
+            var id=tab.getAttribute("data-target")
+            var div=document.querySelector(id)
+            div.style.zIndex="10"
+        }
+    }
+  </script>
+</body>
+</html>

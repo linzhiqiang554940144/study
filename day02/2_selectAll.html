@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>全选和取消全选</title>
+</head>
+<body>
+	<h2>管理员列表</h2>
+	<table border="1px" width="500px">
+	  <thead>
+		<tr>
+			<th><input type="checkbox"/>全选</th>
+			<th>管理员ID</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>1</td>
+	  		<td>Tester</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>2</td>
+	  		<td>Manager</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>3</td>
+	  		<td>Analyst</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>4</td>
+	  		<td>Admin</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  </tbody>
+	</table>
+	<button>删除选定</button>
+  <script>
+		//1查找触发事件的元素
+		var chball=document.querySelector("thead>tr>th>input")
+		//2绑定事件处理函数
+		chball.onclick=function(){
+			//3查找要修改的元素
+			var chball=this
+			var chbs=document.querySelectorAll("tbody>tr>td>input")
+			//4修改元素
+			for(var chb of chbs){
+				chb.checked=chball.checked
+			}
+		}		
+		
+		var chbs=document.querySelectorAll("tbody>tr>td>input")
+		for(var chb of chbs){
+			chb.onclick=function(){
+				var chb=this
+				var chball=document.querySelector("thead>tr>th>input")
+				if(chb.checked==false){
+					chball.checked=false
+				}else{
+					var unchecked=document.querySelector("tbody>tr>td>input:not(:checked)")
+					if(unchecked==null){
+						chball.checked=true
+					}
+				}
+			}
+		}
+
+
+		var chbs=document.querySelectorAll("tbody>tr>td>input")
+		for(var chb of chbs){
+			chb.onclick=function(){
+				var chb=this
+				var chball=document.querySelector("thead>tr>th>input")
+				if(chb.checked==false){
+					chball.checked=false
+				}else{
+					var unchecked=document.querySelector("tbody>tr>td>input:not(:checked)")
+					if(unchecked==null){
+						chball.checked=true
+					}
+				}
+			}
+		}
+
+		var delet=document.querySelector('body>button')
+		console.log(delet)
+		delet.onclick=function(){
+			var deldet=this
+			var chbs=document.querySelectorAll("tbody>tr>td>input")
+			chbs.checked=false
+			console.log(chbs)
+		}
+	</script>
+</body>
+</html>
