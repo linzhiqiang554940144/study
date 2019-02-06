@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>读取并修改元素的属性</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="my-ul/my-ul.css">
+
+</head>
+<body>
+	<h2>实现多标签页效果</h2>
+  <div id="my-tabs">
+    <ul>
+      <li><a href="#content1">10元套餐</a></li>
+      <li><a href="#content2">30元套餐</a></li>
+      <li><a href="#content3">50元包月</a></li>
+    </ul>
+    <div>
+      <div id="content1">
+        10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+      </div>
+      <div id="content2">
+        30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+      </div>
+      <div id="content3">
+        50元包月详情：<br />&nbsp;每月无限量随心打
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="my-ul/my-ul.js"></script>
+  <script>
+    $("#my-tabs").tabs()
+	 
+  </script>
+</body>
+</html>

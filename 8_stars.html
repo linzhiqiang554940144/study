@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    img { position: relative; }
+  </style>
+</head>
+<body>
+<img id="s1" src="img/star.png"><br/>
+<img id="s2" src="img/star.png"><br/>
+<img id="s3" src="img/star.png"><br/>
+<img id="s4" src="img/star.png"><br/>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  /*
+  s1在屏幕左上角的小星星， 点击后从左移动到屏幕右边
+  
+  s2在屏幕左上角的小星星，点击后从左移动到屏幕右边，再移动到下边——走直角
+  s3在屏幕左上角的小星星，点击后从左上角移动到屏幕右下边，走斜线
+  s4点击小星星，变大、变淡....  直至消失
+*/
+  $("#s1").click(function(){
+    $(this).animate({
+      left:500
+    },2000)
+  })
+  $("#s2").click(function(){
+    $(this) .animate({left:500},2000).animate({top:500},2000)
+  })
+  $("#s3").click(function(){
+    $(this).animate({left:500,top:500},2000)
+  })
+  $("#s4").click(function(){
+    alert("疼！")
+    $(this).animate({width:200,height:200,left:-64,top:-64,opacity:0},1000,function(){
+      $(this).hide()
+    })
+  })
+  // $("#s1").click(function(){
+  //   var $s=$(this)
+  //   if($s.is(":animated")) $s.stop();  
+  //   else $s.animate({ left:400 },3000);
+  // })
+  // $("#s2").click(function(){
+  //   var $s=$(this)
+  //   if($s.is(":animated")) $s.stop(true);  
+  //   else $s.animate({ left:400 },1500)
+  //          .animate({ top:200 },1500)
+  // })
+  // $("#s3").click(function(){
+  //   var $s=$(this)
+  //   if($s.is(":animated")) $s.stop();  
+  //   else $s.animate({ left:400, top:200 },3000)
+  // })
+  // $("#s4").click(function(){
+  //   alert("疼!");
+  //   var $s=$(this)
+  //   if($s.is(":animated"))
+  //     $s.stop();  
+  //   else
+  //     $s.animate({
+  //       marginLeft:-64,
+  //       marginTop:-64,
+  //       width:256,
+  //       opacity:0
+  //     },3000,function(){//动画结束后才自动执行
+  //       //this-当前正在播放动画的元素
+  //       $(this).hide();
+  //     })
+  // })
+</script>
+</body>
+</html>
