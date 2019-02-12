@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的属性</h1>
+	<img src="img/1.jpg" alt="1">
+	<script src="js/jquery-1.11.3.js"></script>
+<script>
+// $("img").click(function(){
+// 	var $img=$(this);//获得当前img包装为jq对象
+// 	//获得保存在当前img上的alt属性中的序号
+// 	var i=parseInt($img.attr("alt"));//.prop()
+// 	if(i<4)//如果序号<4
+// 		i++;//还有机会+1
+// 	else//否则
+// 		i=1;//i返回1
+// 	//用新的i拼接成新的src，保存回img中
+// 	$img.attr({ src:`img/${i}.jpg`, alt:i });
+// 	  //.prop()
+// })
+$("img").click(function(){
+	var $img=$(this)
+	var i=parseInt($img.attr("alt"))
+	if(i<4){
+		i++
+	}else{
+		i=1
+	}
+	$img.attr({src:`img/${i}.jpg`,alt:i})
+})
+</script>
+ </body>
+</html>

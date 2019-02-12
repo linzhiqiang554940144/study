@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .btn {
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid #aaa;
+      outline: none;
+    }
+    .up {
+      background: #fff;
+      color: #333;
+    }
+    .down {
+      background: #ddd;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn up">双态按钮</button>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//双态按钮: 让按钮的class在up和down之间切换
+// $("button").click(function(){
+//   $(this).toggleClass("down");
+//   //在有down和没有down之间来回切换
+//   /*
+//   var $btn=$(this);
+//   //如果当前按钮没有down
+//   if(!$btn.hasClass("down"))
+//     $btn.addClass("down");//就添加down
+//   else//否则，就移除down
+//     $btn.removeClass("down");*/
+// })
+$(".btn").click(function(){
+  var $btn=$(this)
+  $btn.toggleClass("down")
+  // if(!$btn.hasClass("down")){
+  //   $btn.addClass("down")
+  // }else{
+  //   $btn.removeClass("down")
+  // }
+})
+</script>
+</body>
+</html>
