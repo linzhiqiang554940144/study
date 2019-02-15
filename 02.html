@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="zan">0</h1>
+    <h1 id="cai">0</h1>
+    <button onclick="zan1()">赞</button>
+    <button onclick="cai1()">踩</button>
+
+    <script>
+        var zan_count=document.getElementById('zan');
+        var cai_count=document.getElementById('cai');
+        function add(a){
+            var zan=0;
+            var cai=0;
+            if(a==0){
+            return function(){
+                zan++
+                zan_count.innerHTML=zan
+        }
+        
+        }else if(a==1){
+        return function(){
+        cai++
+        cai_count.innerHTML=cai
+        }
+        }
+        
+        }
+        var zan1=add(0)
+        var cai1=add(1)
+    </script>
+</body>
+</html>

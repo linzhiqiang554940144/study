@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function student(a,b){
+            this.sname=a;
+            this.sage=b;
+
+        }
+        student.prototype.intr=function(){
+                console.log(`Im${this.sname},Im${this.sage}`)
+        }
+        student.prototype.className="初一2班"           
+        var lilei=new student('lilei',12)
+        var hanmeimei=new student('meimei',13)
+        console.log(lilei)
+        console.log(hanmeimei)
+        console.log(lilei.className,hanmeimei.className)
+        student.prototype.className="初二2班"
+        console.log(lilei.className,hanmeimei.className)
+    </script>
+</body>
+</html>
