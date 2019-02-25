@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+            
+            <template id="tplTodoAdd">
+                <div>
+                    <input type="text"><button>添加</button>
+                </div>
+            </template>
+            <script>
+                var todoAdd={
+                    template:"#tplTodoAdd"
+                }
+            </script>
+
+            <template id="tplTodoItem">
+                <li>1-吃饭</li>
+            </template>
+            <script>
+                var todoItem={
+                    template:"#tplTodoItem"
+                }
+            </script>
+            
+            <template id="tplTodoList">
+                <ul>
+                    <todo-item></todo-item>
+                    <todo-item></todo-item>
+                    <todo-item></todo-item>
+                </ul>
+            </template>
+            <script>
+                var todoList={
+                    template:"#tplTodoList",
+                    components:{
+                        todoItem
+                    }
+                }
+            </script>
+        
+            
+    
+    
+    <template id="tplTodo">
+        <div>
+            <h1>待办事项列表</h1>
+            <todo-add></todo-add>
+            <todo-list></todo-list>
+        </div>
+    </template>
+    <script>
+        Vue.component("todo",{
+            template:"#tplTodo",
+            components:{
+                todoAdd,
+                todoList
+            }
+        })
+    </script>
+
+    
+
+
+    <div id="app">
+        <todo></todo>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

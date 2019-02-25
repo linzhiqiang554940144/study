@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+</head>
+<body>
+    <template id="tp">
+        <div>
+            <button @click="change(-1)">-</button>
+            <span>{{count}}</span>
+            <button @click="change(1)">+</button>
+        </div>
+    </template>
+    <script>
+    Vue.component("my-counter",{
+        template:"#tp",
+        data:function(){
+            return {count:1 }
+        },
+        methods:{
+            change(i){
+                this.count+=i
+                if(this.count==0){
+                    this.count=1
+                }
+            }
+        }
+    })
+    </script>
+    <div id="app">
+        <my-counter></my-counter>
+        <my-counter></my-counter>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{}
+        })
+    </script>
+</body>
+</html>

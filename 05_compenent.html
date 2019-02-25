@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    
+    <template id="tplTodoAdd">
+        <div>
+            <input type="text"><button>添加</button>
+        </div>
+    </template>
+    <script>
+        var todoAdd={
+            template:"#tplTodoAdd"
+        }
+    </script>
+
+    <template id="tplTodoItem">
+        <li>{{i+1}}-{{task}}</li>
+    </template>
+    <script>
+        var todoItem={
+            template:"#tplTodoItem",
+            props:["task","i"] //对外：父组件可绑定数据 对内data{task：xxx，i：x}
+        }
+    </script>
+    
+    <template id="tplTodoList">
+        <ul>
+            <todo-item v-for="(task,i) of tasks" :task="task" :i="i"></todo-item>
+        </ul>
+    </template>
+    <script>
+        var todoList={
+            template:"#tplTodoList",
+            props:["tasks"],
+            components:{
+                todoItem
+            }
+        }
+    </script>
+    
+            
+    
+    
+    <template id="tplTodo">
+        <div>
+            <h1>待办事项列表</h1>
+            <todo-add></todo-add>
+            <todo-list :tasks="tasks"></todo-list>
+        </div>
+    </template>
+    <script>
+        Vue.component("todo",{
+            template:"#tplTodo",
+            data:function(){
+                return {
+                    tasks:["吃饭","睡觉","打豆豆","打日天"]
+                }
+            },
+            components:{
+                todoAdd,
+                todoList
+            }
+        })
+    </script>
+
+    
+
+
+    <div id="app">
+        <todo></todo>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

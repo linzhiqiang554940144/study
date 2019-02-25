@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <todo></todo>
+  <todo-item></todo-item>
+</div>
+<template id="tplTodo">
+  <div>
+    <h1>待办事项列表</h1>
+    <hr>
+    <todo-add></todo-add>
+    <todo-list></todo-list>
+  </div>
+</template>
+<template id="tplTodoAdd">
+  <div>
+    <input/><button>添加</button>
+  </div>
+</template>
+<template id="tplTodoList">
+  <ul>
+    <todo-item></todo-item>
+    <todo-item></todo-item>
+    <todo-item></todo-item>
+  </ul>
+</template>
+<template id="tplTodoItem">
+  <li>1 - 吃饭 <button>x</button></li>
+</template>
+<script>
+var todoAdd={//<todo-add>
+  template:"#tplTodoAdd"
+};
+var todoItem={//<todo-item>
+    template:"#tplTodoItem"
+  };
+var todoList={//<todo-list>
+  template:"#tplTodoList",
+  components:{ todoItem }
+            //<todo-item>
+};
+Vue.component("todo",{
+  template:"#tplTodo",
+  components:{ todoAdd, todoList }
+           //<todo-add> <todo-list>
+});
+
+</script>
+<script>
+new Vue({ el:"#app" })
+</script>
+</body>
+</html>
