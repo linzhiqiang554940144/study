@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Elem(id){
+            this.elem=document.getElementById(id)
+        }
+        Elem.prototype.html=function(val){
+            var elem=this.elem
+            if(val){
+                elem.innerHTML=val
+                return this
+            }else{
+                return elem.innerHTML
+            }
+        }
+        var div1=new Elem('div1')
+        console.log(div1.html("hllow wrold"))
+    </script>
+</body>
+</html>
