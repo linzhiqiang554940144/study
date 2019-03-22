@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		html, body {
+			height: 100%;
+			width: 100%;
+		}
+
+		.wrap-noFound {
+			min-height: 100%;
+			/*-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-moz-box-pack: center;
+			-webkit--moz-box-pack: center;
+			box-pack: center;
+			align-items: center;
+			-webkit-align-items: center;
+			box-align: center;
+			-moz-box-align: center;
+			-webkit-box-align: center;*/
+		}
+
+		.wrap-noFound:before {
+			content: ' ';
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: #000000 url("./assets/images/404-dark.png") no-repeat top center;
+			background-size: 1920px 1080px;
+		}
+
+		.wrap-noFound .img-container .img-icon {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.wrap-noFound .img-container .tip {
+			margin-top: 90px;
+			line-height: 45px;
+			color: #ffffff;
+			font-size: 26px;
+			text-align: center;
+		}
+
+		.wrap-noFound .system-protect .img-icon {
+			margin: 0 auto;
+		}
+
+		.wrap-noFound .box {
+			width: 1150px;
+			margin: 0 auto;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-moz-box-pack: center;
+			-webkit--moz-box-pack: center;
+			box-pack: center;
+			align-items: center;
+			-webkit-align-items: center;
+			box-align: center;
+			-moz-box-align: center;
+			-webkit-box-align: center;
+		}
+
+		.wrap-noFound .system-protect {
+			margin: 0 auto;
+			width: 900px;
+			padding-top: 100px;
+		}
+
+		.wrap-noFound .btn-container {
+			overflow: hidden;
+			text-align: center;
+		}
+
+		.wrap-noFound .btn-container p {
+			display: inline-block;
+			line-height: 100px;
+			color: #ffffff;
+			font-size: 18px;
+			vertical-align: middle;
+			width: 280px;
+			cursor: pointer;
+		}
+
+		.wrap-noFound .btn-container p span {
+			vertical-align: middle;
+		}
+
+		.wrap-noFound .btn-container p img {
+			vertical-align: middle;
+		}
+
+		.logo-name {
+			margin: 27px auto 0;
+			height: 38px;
+			width: 96px;
+		}
+
+		.logo-name img {
+			display: block;
+		}
+
+		.recode-txt {
+			position: fixed;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%) translateY(0);
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap-page login-wrap mobile-wrap wrap-noFound">
+	<div class="wrap-container box">
+		<div class="system-protect img-container">
+			<!--<img :src="g.path.images+'/404-bg.png'" alt="">-->
+			<img class="img-icon" src="./assets/images/404-bg.png" alt="">
+			<p class="tip">您的页面找不到了！</p>
+			<div class="btn-container">
+				<p class="refresh refreshBtn">
+					<img src="./assets/images/refresh.png" alt="">
+					<span>刷新页面</span>
+				</p>
+				<p class="backIndex backBtn">
+					<img src="./assets/images/back.png" alt="">
+					<span>返回首页</span>
+				</p>
+			</div>
+		</div>
+		<!--<div class="logo-name">
+			&lt;!&ndash;<img src="g.path.images+'/logo-name.png'" alt="">&ndash;&gt;
+		</div>-->
+	</div>
+	<!--<div class="recode-txt">浙ICP备18001055号</div>-->
+</div>
+<script>
+
+	var refreshBtn = document.getElementsByClassName("refreshBtn")[0];
+	var backBtn = document.getElementsByClassName("backBtn")[0];
+	refreshBtn.onclick = function () {
+		window.location.reload();
+		console.log("sssssssss")
+	};
+	backBtn.onclick = function () {
+		window.location.href = 'index.html';
+	}
+
+</script>
+</body>
+</html>

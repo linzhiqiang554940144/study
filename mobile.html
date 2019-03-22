@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="keyword" content="选址,提升流量,转化率,外卖加盟,外卖,精细化,运营,餐饮,饿了么,美团外卖,大数据">
+	<link rel="icon" type="shortcut icon" sizes="32x32" href="assets/images/ico.png">
+	<title>查查店-简单高效的选址运营工具</title>
+	<meta name=apple-mobile-web-app-capable content=yes>
+	<meta name=apple-mobile-web-app-status-bar-style content=black>
+	<meta name=format-detection content="telephone=no">
+	<meta name=format-detection content="email=no">
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			height: 100%;
+			width: 100%;
+		}
+
+		.mobile-wrap {
+			background: #1f1f1f url("./assets/images/com-bg.jpg") no-repeat top center;
+			background-size: 7.5rem 22.82rem;
+			overflow: hidden;
+			height: 100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.mobile-wrap .inner-con {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.mobile-wrap .inner-con .version-con {
+			padding: .2rem .2rem 0 .2rem;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			flex: 1;
+		}
+
+		.mobile-wrap .inner-con .img-wrap {
+			height: .9rem;
+			position: relative;
+		}
+
+		.mobile-wrap .inner-con .img-wrap .home-icon {
+			margin: .25rem auto 0;
+			width: 1.24rem;
+			display: block;
+		}
+
+		.mobile-wrap .inner-con .add-step {
+			-webkit-border-radius: .05rem;
+			-moz-border-radius: .05rem;
+			border-radius: .05rem;
+			background: #ffffff;
+			height: 100%;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-box;
+			display: flex;
+			-webkit-box-align: center;
+			-moz-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-moz-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+
+		.mobile-wrap .inner-con .add-step .empty-desc img {
+			margin: 0 auto .2rem;
+			display: block;
+			width: 1.58rem;
+		}
+
+		.mobile-wrap .inner-con .add-step .empty-desc .matter-tips {
+			font-size: .25rem;
+			line-height: .4rem;
+			color: #858585;
+			text-align: center;
+		}
+
+		.mobile-wrap .inner-con .add-step .empty-desc .net-link {
+			line-height: .35rem;
+			color: #55dee0;
+			font-size: .3rem;
+			text-decoration: underline;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="mobile-wrap">
+	<div class="inner-con">
+		<div class="register-con version-con">
+			<div class="add-step center-flex">
+				<div class="empty-desc">
+					<img src="./assets/images/empty-icon.png" alt="">
+					<p class="matter-tips text-middle">温馨提示：请先前往PC端</p>
+					<p class="net-link text-middle">system.chachadian.cn</p>
+				</div>
+			</div>
+		</div>
+		<div class="img-wrap relative">
+			<img class="home-icon" src="./assets/images/index-ico.png" alt="">
+		</div>
+	</div>
+</div>
+</body>
+<script src="./libs/autoSize.js"></script>
+<script>
+	function isPC() {
+		var userAgentInfo = navigator.userAgent;
+		var Agents = ["Android", "iPhone",
+			"SymbianOS", "Windows Phone",
+			"iPad", "iPod"];
+		var flag = true;
+		for (var v = 0; v < Agents.length; v++) {
+			if (userAgentInfo.indexOf(Agents[v]) > 0) {
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
+	if (isPC())
+	{
+		window.location.href = "./index.html";
+	}
+</script>
+</html>

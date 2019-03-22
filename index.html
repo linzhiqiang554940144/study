@@ -1,42 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="keyword" content="选址,提升流量,转化率,外卖加盟,外卖,精细化,运营,餐饮,饿了么,美团外卖,大数据">
+	<link rel="icon" type="shortcut icon" sizes="32x32" href="assets/images/ico.png">
+	<title>查查店-简单高效的选址运营工具</title>
+	<script type="text/javascript"
+			src="https://api.map.baidu.com/api?v=2.0&ak=boIQxO42H05Bf5unCOGI6hOmznVSR0oQ"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+	<script type="text/javascript">
+		window.devicePixelRatio = 2;
+	</script>
+	<script type="text/javascript" src="./libs/mapv.js"></script>
+	<script src="./libs/coordtransform.js"></script>
+	<script src="./libs/pako.min.js"></script>
+	<script src="./libs/socket.io.js"></script>
+	<script>var ver = "";</script>
 </head>
 <body>
-  <button id="btn">获得天气</button>
-  <script src="jquery-1.11.3.js"></script>
+<div id="app"></div>
+<script> var _hmt = _hmt || [];
+(function ()
+{
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?1c4fb3b9d1e760ba939d32770ecf1435";
+	hm.id = "baidu_tj_pc"
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(hm, s);
+})();</script>
+<script src="./libs/config.dev.js"></script>
+<script src="./index.js"></script>
 <script>
-/*$("#btn").click(function(){
-  var script=document.createElement("script");
-  script.src="http://localhost:8000?callback=doit";
-  document.body.appendChild(script);
-})
-function doit(res){
-  alert(res);
-  //回调函数执行完,删除body中最后一个script
-  document.body.removeChild(
-    document.body.lastElementChild
-  );
-}*/
-$("#btn").click(function(){
-  $.ajax({//右键->用Live Server运行，查看错误
-    url:"http://localhost:8000",
-    type:"get",
-    dataType:"jsonp",
-    success:function(res){
-      alert(res)
-    }
-  })
-})
+	function isPC()
+	{
+		var userAgentInfo = navigator.userAgent;
+		var Agents = ["Android", "iPhone",
+			"SymbianOS", "Windows Phone",
+			"iPad", "iPod"];
+		var flag = true;
+		for (var v = 0; v < Agents.length; v++)
+		{
+			if (userAgentInfo.indexOf(Agents[v]) > 0)
+			{
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
 
+	if (!isPC())
+	{
+// 		window.location.href = "./mobile.html";
+	}
 </script>
-  <!--<script src="http://localhost:8000?callback=doit"></script>-->
-  <!--客户端携带自定义函数名doit到服务端-->
-  <!--doit('sun -4~8 from dongdong')-->
-  <!--能够请求一段js代码到客户端自动执行-->
+
 </body>
 </html>
+

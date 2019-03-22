@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		body{
+			background:url("./assets/images/background.jpg") no-repeat;
+			background-size:cover;
+		}
+		i{
+			font-style:normal;
+		}
+		.clear:after{
+			display: table;
+			content: " ";
+			clear: both;
+		}
+		.clear:before{
+			display: table;
+			content: " ";
+		}
+		.left{
+			float:left
+		}
+		.right{
+			float:right;
+		}
+		.pointer {
+			cursor: pointer;
+		}
+		.relative{
+			position:relative;
+		}
+		.absolute{
+			position:absolute;
+		}
+		.fixed{
+			position: fixed;
+		}
+		.ani-time {
+			-webkit-transition: all .3s;
+			-moz-transition: all .3s;
+			-ms-transition: all .3s;
+			-o-transition: all .3s;
+			transition: all .3s;
+		}
+		.index-rank .border-blue{
+			border: 1px solid #00cfd1;
+			border-radius:5px;
+		}
+		.index-rank .location{
+             position:relative;
+			 margin-left:20px;
+		}
+		.index-rank .location .province{
+			position: absolute;
+			content: "";
+			right: 6px;
+			top: 50%;
+			margin-top: -2px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+		}
+		.index-rank .location .province i{
+			vertical-align:middle;
+			top: 16px;
+			z-index:200;
+		}
+		.index-rank .location .map-icon{
+			vertical-align:middle;
+			position:relative;
+			padding-right:10px;
+			cursor: pointer;
+			color:#00cfd1;
+			font-size:18px;
+		}
+		.index-rank .location .map-icon{
+			vertical-align:middle;
+		}
+		.index-rank .location .map-con {
+			vertical-align: middle;
+			position: relative;
+			padding-right: 20px;
+			cursor: pointer;
+			color: #00cfd1;
+			font-size: 18px;
+		}
+		.index-rank .location .map-con i{
+			vertical-align:middle;
+			top: 16px;
+			z-index:200;
+		}
+		.index-rank .location .map-con:after {
+			 position: absolute;
+			 content: "";
+			 right: 6px;
+			 border-top: 5px solid #00ced0;
+			 top: 50%;
+			 margin-top: -2px;
+			 border-left: 5px solid transparent;
+			 border-right: 5px solid transparent;
+
+		 }
+		.index-rank .location .action-dot{
+
+		}
+		.index-rank .location .action-dot:after{
+			border: 0 !important;
+		}
+		.index-rank .location .action-dot i{
+			position: absolute;
+			height: 35px;
+			width: 1px;
+			right: 10px;
+			top: 14px;
+			background: #00ced0;
+			z-index: 15;
+		}
+		.index-rank .location .action-dot i:after{
+			position: absolute;
+			top: -5px;
+			width: 5px;
+			height: 5px;
+			left: -2px;
+			content: "";
+			background: #00ced0;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			z-index: 30;
+		}
+		.index-rank .location .action-dot i:before{
+			position: absolute;
+			bottom: -5px;
+			width: 5px;
+			height: 5px;
+			left: -2px;
+			content: "";
+			background: #00ced0;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			z-index: 30;
+		}
+		.index-rank .province-list{
+			position:absolute;
+			background: #000000;
+			z-index: 10;
+			top: 50px;
+			width:500px;
+			height:300px;
+			display:none;
+		}
+		.index-rank .province-list .select-location {
+			padding: 10px 30px;
+
+		}
+		.index-rank .province-list .currentLocation {
+			padding-right: 18px;
+			color: #00ced0;
+		}
+		.index-rank .province-list .dl-item {
+			line-height: 50px;
+		}
+		.index-rank .province-list .dl-item span{
+			margin: 0px 0 0 30px;
+			text-decoration: underline;
+			font-size: 14px;
+			color: #a7a7a7;
+		}
+		.index-rank .province-list .dl-item span:hover{
+			color: #ffffff;
+		}
+		.index-rank .province-list .dl-item span:nth-child(1) {
+			margin: 0px;
+		}
+		.index-rank .province-list .dl-item span{}
+		.index-rank .province-list .dt-item {
+			font-size: 15px;
+			line-height: 50px;
+			width: 95px;
+		}
+		.index-rank .province-list .dd-item {
+			padding: 0 15px;
+			max-width: 80px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			color: #ffffff;
+			position: relative;
+			font-size: 14px;
+		}
+		.index-rank .province-list .dd-item.action{
+			color: #00ced0;
+		}
+		.index-rank .province-list .dd-item.action:before{
+			position: absolute;
+			content: "";
+			left: 0px;
+			top: 40%;
+			width: 0;
+			border-left: 5px solid #00ced0;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+		}
+		.index-rank .province-list .index-rank .province-list .dd-item:hover{
+			color: #00ced0;
+		}
+		.index-rank .province-list .border-foot{
+			border-bottom: 1px solid #004041;
+		}
+		.index-rank .index-rank {
+
+		}
+		.index-rank .kind-rank{
+			padding-top: 40px;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-ms-flex-pack: justify;
+			justify-content: space-between;
+		}
+		.index-rank .kind-rank .kind-item{
+			width: 325px;
+			box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.6);
+			background:rgba(0, 0, 0, 0.5);
+			height:800px;
+			margin-bottom:20px;
+		}
+		/*.index-rank .kind-rank .kind-type{
+			float:left;
+			margin-left:20px;
+		}*/
+		.index-rank .kind-rank .kind-item:nth-child(3n) .itemContainer{
+			right: 0;
+		}
+		/*.index-rank .kind-rank .itemContainer:nth-child(3n) {
+			right: 0;
+		}*/
+
+		.index-rank .kind-rank .kind-item .mask-box{
+			width: 100%;
+			height: 100%;
+			z-index: 9;
+			top: 0;
+			left: 0;
+			background: rgba(0, 0, 0, 0.7);
+			display:none;
+		}
+		.index-rank .kind-rank .kind-item .slash-img{
+			position:absolute;
+			left:0;
+			top:0;
+		}
+		.index-rank .kind-rank .kind-item .slash-img .month-tip{
+			color:#fff;
+			position:absolute;
+			left: 18px;
+			top: 24px;
+			font-size:14px;
+			transform:rotate(-45deg);
+		}
+		.index-rank .kind-rank .kind-item .line-kind{
+			margin: 20px 0 25px;
+			text-align:center;
+		}
+		.index-rank .kind-rank .kind-item .unfold-text{
+			font-size: 14px;
+			padding: 5px;
+			top: 10px;
+			right: 5px;
+			color: #ffffff;
+			-ms-text-shadow: 0 0 5px #00cfd1, 0 0 10px #00cfd1, 0 0 20px #00cfd1, 0 0 30px #00cfd1;
+			-moz-text-shadow: 0 0 5px #00cfd1, 0 0 10px #00cfd1, 0 0 20px #00cfd1, 0 0 30px #00cfd1;
+			-webkit-text-shadow: 0 0 5px #00cfd1, 0 0 10px #00cfd1, 0 0 20px #00cfd1, 0 0 30px #00cfd1;
+			text-shadow: 0 0 5px #00cfd1, 0 0 10px #00cfd1, 0 0 20px #00cfd1, 0 0 30px #00cfd1;
+		}
+		.index-rank .kind-rank .kind-item .fold-btn {
+			padding: 5px;
+			right: 32px;
+			top: 57px;
+			display:none;
+		}
+		.index-rank .kind-rank .kind-item .fold-btn:hover {
+			 -webkit-transform: translate3d(0, 5px, 0);
+			 -moz-transform: translate3d(0, 5px, 0);
+			 -ms-transform: translate3d(0, 5px, 0);
+			 -o-transform: translate3d(0, 5px, 0);
+			 transform: translate3d(0, 5px, 0);
+		}
+		.index-rank .kind-rank .kind-item .fold-btn img {
+			display: block;
+			width: 40px;
+			height: 40px;
+		}
+		.index-rank .kind-rank .kind-item .text-underline {
+			text-decoration: underline;
+		}
+		.index-rank .kind-rank .kind-item .menu-kind{
+			width: 200px;
+			height: 28px;
+			line-height: 28px;
+			margin: 0 auto;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			font-size: 18px;
+			text-align: center;
+			color:#fff;
+		}
+		.index-rank .kind-rank .kind-item .blue-bg {
+			border: 1px solid #0f4d4e;
+			background: url("./assets/images/form-bg-active.png") repeat;
+		}
+		.index-rank .kind-rank .kind-item .rank-order{
+			line-height: 42px;
+			margin: 0 auto;
+			height: 42px;
+			font-size: 13px;
+			color: #6c6c6c;
+			text-align:center;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .left-line {
+			left: 20px;
+			top: 235px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .right-line {
+			right: 20px;
+			top: 235px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .rank-item {
+			padding: 0 45px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .inner-item {
+			height: 60px;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-ms-flex-wrap: nowrap;
+			flex-wrap: nowrap;
+			justify-content: left;
+			align-items: center;
+			border-top: 1px solid #014040;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .rank-item:hover {
+			background: rgba(50, 50, 50, 0.7);
+		}
+		.index-rank .kind-rank .kind-item .kind-list .ranks-num {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin-right: 22px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .ranks-num img {
+			width: 17px;
+			display: block;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .ranks-num i {
+			width: 20px;
+			display: block;
+			height: 20px;
+			color: #00ced0;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			line-height: 20px;
+			text-align: center;
+		}
+		.index-rank .rank-item .kind-item-icon {
+			display: inline-block;
+			margin-right: 18px;
+			-webkit-box-shadow: 0 0 32px #00c2c4;
+			-moz-box-shadow: 0 0 32px #00c2c4;
+			box-shadow: 0 0 32px #00c2c4;
+			width: 32px;
+			height: 32px;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+		}
+		.index-rank .kind-rank .rank-item .kind-item-icon img {
+			display: block;
+			width: 32px;
+			height: 32px;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+
+		.index-rank .kind-rank .kind-item .kind-list .rank-item .total-desc {
+			width: 0;
+			flex: 1;
+			overflow: hidden;
+			webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+		}
+
+		.index-rank .kind-rank .kind-item .kind-list .rank-item .desc-len {
+			width: 170px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .rank-item .desc-txt {
+			width: 160px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			font-size: 16px;
+			color: #00cfd1;
+			height: 22px;
+			line-height: 22px;
+		}
+		.index-rank .kind-rank .kind-item .kind-list .rank-item .total-desc {}
+		.index-rank .kind-rank .kind-item .kind-list .rank-item .desc-text {
+			font-size: 12px;
+			color: #8a8a8a;
+
+		}
+		.index-rank .kind-rank .kind-item .kind-list i {
+			color: #e5e5e5;
+		}
+		.index-rank .kind-rank .kind-list .item-account {
+			width: 180px;
+		}
+		.index-rank .kind-rank .kind-list .desc-txt {
+			width: 170px;
+		}
+		.index-rank .itemContainer.item-spread{
+		    width:460px;
+			z-index:100;
+			box-shadow: 0 0 15px #03aaac;
+			border-radius:5px;
+		}
+		.index-rank-container{
+			position: relative;
+		}
+		.index-rank-container:before{
+			content: ' ';
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background:url("./../../../assets/images/background.jpg") no-repeat;
+			background-size: 1920px 1080px;
+		}
+		.index-rank-container .wrap-container {
+			width: 1200px;
+			margin: 0 auto;
+			box-sizing: border-box;
+			padding-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+<div class="index-rank-container">
+		<div class="wrap-container index-rank" >
+			<div class="location">
+				<img class="map-icon" src='./assets/images/map-icon.png' alt="">
+				<span class="map-con province">
+				浙江省
+				<i></i>
+					<div class="province-list border-blue">
+						 <div class="select-location">
+							<div class="dl-item clear city-list border-foot">
+								<div class="dt-item left currentLocation">当前定位省份</div>
+								<div class="left list-len">
+									<div class="dd-item left pointer ani-time action " pId="1">
+										浙江省
+									</div>
+								</div>
+							</div>
+							<div class="dl-item clear city-list">
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									广西壮族自治区
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									广西壮族自治区
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									广西壮族自治区
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+								<div class="dd-item left pointer ani-time left">
+									浙江省
+								</div>
+
+							</div>
+						</div>
+					</div>
+			</span>
+			</div>
+			<div class="rank-container">
+				<div class="kind-rank">
+					<div class="kind-item relative kind-type">
+						<div  class="mask-box fixed"></div>
+						<div  class="kind-item itemContainer border-blue diff-kind absolute ani-time">
+							<div class="slash-img">
+								<img  src="./assets/images/index-bg.png" alt="">
+								<span class="month-tip">五月份</span>
+							</div>
+							<div class="line-kind ani-time">
+								<img src="./assets/images/line-kind.png" alt="">
+							</div>
+							<div class="unfold-text spread absolute text-underline pop-btn-shadow pointer">展开></div>
+							<div  class="fold-btn absolute ani-time pointer">
+								<img src="./assets/images/index-fold.png" alt="">
+							</div>
+							<div class="menu-kind blue-bg text-middle">快餐便当榜</div>
+							<div class="rank-order text-middle">(浙江省外卖品牌前十榜-按平均月销量排序)</div>
+							<div class="kind-list relative">
+								<img class="absolute left-line" src="./assets/images/left-line.png" alt="">
+								<img class="absolute right-line" src="./assets/images/right-line.png" alt="">
+								<div class="rank-item ani-time">
+									<div class="inner-item" >
+										<div class="ranks-num "><i class="border-blue">1</i></div>
+										<!--<div class="ranks-num" v-if="index<=2">
+											<img :src="g.path.images+'/store-icon'+(index+1)+'.png'" alt="">
+										</div>-->
+										<div class="icon-kind-wrap">
+											<div class="kind-item-icon">
+												<img src="https://fuss10.elemecdn.com/4/90/091a24a9aab7ec698fddd080a7d71png.png" alt="">
+											</div>
+										</div>
+										<div class="item-account">
+											<p class="desc-txt">二十五块半</p>
+											<p class="desc-txt desc-text">平均单店月销量：<i>600单</i>
+											</p>
+										</div>
+										<div class="total-desc ani-time desc-len">
+											<p class="desc-txt desc-text">店铺总数：<i>30家</i></p>
+											<p class="desc-txt desc-text">总月销量：<i>78单</i>
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="rank-item ani-time">
+									<div class="inner-item" >
+										<div class="ranks-num "><i class="border-blue">1</i></div>
+										<!--<div class="ranks-num" v-if="index<=2">
+											<img :src="g.path.images+'/store-icon'+(index+1)+'.png'" alt="">
+										</div>-->
+										<div class="icon-kind-wrap">
+											<div class="kind-item-icon">
+												<img src="" alt="">
+											</div>
+										</div>
+										<div class="item-account">
+											<p class="desc-txt">二十000五块半</p>
+											<p class="desc-txt desc-text">平均单店月销量：<i>600单</i>
+											</p>
+										</div>
+										<div class="total-desc ani-time desc-len">
+											<p class="desc-txt desc-text">店铺总数：<i>30家</i></p>
+											<p class="desc-txt desc-text">总月销量：<i>78单</i>
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="rank-item ani-time">
+									<div class="inner-item" >
+										<div class="ranks-num "><i class="border-blue">1</i></div>
+										<!--<div class="ranks-num" v-if="index<=2">
+											<img :src="g.path.images+'/store-icon'+(index+1)+'.png'" alt="">
+										</div>-->
+										<div class="icon-kind-wrap">
+											<div class="kind-item-icon">
+												<img src="" alt="">
+											</div>
+										</div>
+										<div class="item-account">
+											<p class="desc-txt">二十五块半</p>
+											<p class="desc-txt desc-text">平均单店月销量：<i>600单</i>
+											</p>
+										</div>
+										<div class="total-desc ani-time desc-len">
+											<p class="desc-txt desc-text">店铺总数：<i>30家</i></p>
+											<p class="desc-txt desc-text">总月销量：<i>78单</i>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="kind-item kind-type relative">
+						<div  class="mask-box fixed"></div>
+						<div  class="kind-item itemContainer diff-kind absolute ani-time">
+							<div class="slash-img">
+								<img  src="./assets/images/index-bg.png" alt="">
+								<span class="month-tip">五月份</span>
+							</div>
+							<div class="line-kind ani-time">
+								<img :src="./assets/images/line-kind.png" alt="">
+							</div>
+							<div class="spread unfold-text absolute text-underline pop-btn-shadow pointer">展开></div>
+							<div  class="fold-btn absolute ani-time pointer">
+								<img src="./assets/images/index-fold.png" alt="">
+							</div>
+							<div class="menu-kind blue-bg text-middle">快餐便当榜</div>
+							<div class="rank-order text-middle">(浙江省外卖品牌前十榜-按平均月销量排序)</div>
+							<div class="kind-list relative">
+								<img class="absolute left-line" src="./assets/images/left-line.png" alt="">
+								<img class="absolute right-line" :src="./assets/images/right-line.png" alt="">
+								<div class="rank-item ani-time">
+									<div class="inner-item" >
+										<div class="ranks-num "><i class="border-blue">1</i></div>
+										<!--<div class="ranks-num" v-if="index<=2">
+											<img :src="g.path.images+'/store-icon'+(index+1)+'.png'" alt="">
+										</div>-->
+										<div class="icon-kind-wrap">
+											<div class="kind-item-icon">
+												<img src="" alt="">
+											</div>
+										</div>
+										<div class="item-account">
+											<p class="desc-txt">二十五块半</p>
+											<p class="desc-txt desc-text">平均单店月销量：<i>600单</i>
+											</p>
+										</div>
+										<div class="total-desc ani-time desc-len">
+											<p class="desc-txt desc-text">店铺总数：<i>30家</i></p>
+											<p class="desc-txt desc-text">总月销量：<i>78单</i>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="kind-item kind-type relative">
+						<div  class="mask-box fixed"></div>
+						<div  class="kind-item itemContainer diff-kind absolute ani-time">
+							<div class="slash-img">
+								<img  src="./assets/images/index-bg.png" alt="">
+								<span class="month-tip">五月份</span>
+							</div>
+							<div class="line-kind ani-time">
+								<img :src="./assets/images/line-kind.png" alt="">
+							</div>
+							<div class="spread unfold-text absolute text-underline pop-btn-shadow pointer">展开></div>
+							<div  class="fold-btn absolute ani-time pointer">
+								<img src="./assets/images/index-fold.png" alt="">
+							</div>
+							<div class="menu-kind blue-bg text-middle">快餐便当榜</div>
+							<div class="rank-order text-middle">(浙江省外卖品牌前十榜-按平均月销量排序)</div>
+							<div class="kind-list relative">
+								<img class="absolute left-line" src="./assets/images/left-line.png" alt="">
+								<img class="absolute right-line" :src="./assets/images/right-line.png" alt="">
+								<div class="rank-item ani-time">
+									<div class="inner-item" >
+										<div class="ranks-num "><i class="border-blue">1</i></div>
+										<!--<div class="ranks-num" v-if="index<=2">
+											<img :src="g.path.images+'/store-icon'+(index+1)+'.png'" alt="">
+										</div>-->
+										<div class="icon-kind-wrap">
+											<div class="kind-item-icon">
+												<img src="" alt="">
+											</div>
+										</div>
+										<div class="item-account">
+											<p class="desc-txt">二十五块半</p>
+											<p class="desc-txt desc-text">平均单店月销量：<i>600单</i>
+											</p>
+										</div>
+										<div class="total-desc ani-time desc-len">
+											<p class="desc-txt desc-text">店铺总数：<i>30家</i></p>
+											<p class="desc-txt desc-text">总月销量：<i>78单</i>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/zepto/1.1.3/zepto.js"></script>
+<script>
+       $(function () {
+		   $(".index-rank").on("click",".location",function(event){
+			   event.stopPropagation();
+		   	  $(".index-rank .map-con").toggleClass("action-dot").find(".province-list").toggle();
+		   })
+		   $(".index-rank .location").on("click",".dd-item",function(event){
+              console.log($(this).attr("pId"));
+		   })
+		   document.addEventListener("click",function(){
+			   $(".index-rank .map-con").removeClass("action-dot").find(".province-list").hide();
+		   },false)
+		   $(".index-rank .rank-container").on("click",".spread",function(){
+                   $(this).parent(".itemContainer").addClass("item-spread").removeClass("border-blue");
+			       $(this).parent(".itemContainer").siblings(".mask-box").show();
+			       $(this).hide();
+			       $(this).siblings(".fold-btn").show();
+		   })
+		   $(".index-rank .rank-container").on("click",".fold-btn",function () {
+			   $(this).parent(".itemContainer").removeClass("item-spread").addClass("border-blue");
+			   $(this).parent(".itemContainer").siblings(".mask-box").hide();
+			   $(this).hide();
+			   $(this).siblings(".spread").show();
+		   })
+	   })
+</script>
+</html>
